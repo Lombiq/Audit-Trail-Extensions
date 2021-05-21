@@ -1,15 +1,17 @@
-# Lombiq <add project name here>
+# Lombiq Audit Trail Extensions
 
 
 
 ## About
 
-Add a general overview of the project here. Don't forget to update the year in the Licence!
+A module with additional features for the [Audit Trail module](https://www.youtube.com/watch?v=ko0jEgQtXYc) in Orchard Core. 
 
 
 ## Documentation
 
-Add detailed documentation here. If it's a lot of content then create documentation pages under the *Docs* folder and link pages here.
+This module currently includes:
+
+- `IAuditTrailContentVersionNumberService`: A service for working with previous versions of contents (even if they aren't `Versionable`) using Audit Trail's Content Saved events.
 
 
 ## Contributing and support
