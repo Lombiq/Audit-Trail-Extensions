@@ -1,8 +1,6 @@
 using Lombiq.AuditTrailExtensions.Models;
 using OrchardCore.AuditTrail.Indexes;
 using OrchardCore.AuditTrail.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YesSql;
