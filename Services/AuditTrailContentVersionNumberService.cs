@@ -1,6 +1,8 @@
 using Lombiq.AuditTrailExtensions.Models;
 using OrchardCore.AuditTrail.Indexes;
 using OrchardCore.AuditTrail.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YesSql;
@@ -16,8 +18,9 @@ namespace Lombiq.AuditTrailExtensions.Services
 
         public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
             _session
-                .QueryIndex<ContentAuditTrailEventIndex>(index =>
+                .Query<AuditTrailEvent, ContentAuditTrailEventIndex>(index =>
                     index.ContentItemId == contentItemId && index.EventName == Saved)
+                .Where($"{nameof(Document.Type)} = 'OrchardCore.AuditTrail.Models.AuditTrailEvent, OrchardCore.AuditTrail'")
                 .CountAsync();
 
         public async Task<SavedEvent> GetCurrentVersionAsync(
@@ -33,6 +36,7 @@ namespace Lombiq.AuditTrailExtensions.Services
                     .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
                         index.EventName == Saved && index.Id <= auditTrailEventIndex.Id)
                     .With<ContentAuditTrailEventIndex>(index => index.ContentItemId == contentItemId)
+                    .Where($"{nameof(Document.Type)} = 'OrchardCore.AuditTrail.Models.AuditTrailEvent, OrchardCore.AuditTrail'")
                     .OrderByDescending(index => index.Id)
                     .ListAsync())
                 .ToList();
