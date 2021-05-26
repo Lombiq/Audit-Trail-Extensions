@@ -1,7 +1,6 @@
 using Lombiq.AuditTrailExtensions.Models;
 using OrchardCore.AuditTrail.Indexes;
 using OrchardCore.AuditTrail.Models;
-using System.Linq;
 using System.Threading.Tasks;
 using YesSql;
 using static OrchardCore.AuditTrail.Providers.ContentAuditTrailEventProvider;
@@ -16,7 +15,7 @@ namespace Lombiq.AuditTrailExtensions.Services
 
         public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
             _session
-                .QueryIndex<ContentAuditTrailEventIndex>(index =>
+                .Query<AuditTrailEvent, ContentAuditTrailEventIndex>(index =>
                     index.ContentItemId == contentItemId && index.EventName == Saved)
                 .CountAsync();
 
@@ -29,16 +28,14 @@ namespace Lombiq.AuditTrailExtensions.Services
                 .FirstOrDefaultAsync();
             if (auditTrailEventIndex == null) return null;
 
-            var saveEvents = (await _session
-                    .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
-                        index.EventName == Saved && index.Id <= auditTrailEventIndex.Id)
-                    .With<ContentAuditTrailEventIndex>(index => index.ContentItemId == contentItemId)
-                    .OrderByDescending(index => index.Id)
-                    .ListAsync())
-                .ToList();
+            var query = _session
+                .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
+                    index.EventName == Saved && index.Id <= auditTrailEventIndex.Id)
+                .With<ContentAuditTrailEventIndex>(index => index.ContentItemId == contentItemId)
+                .OrderByDescending(index => index.Id);
 
-            var saveEvent = saveEvents.FirstOrDefault();
-            var versionNumber = saveEvents.Count;
+            var saveEvent = await query.FirstOrDefaultAsync();
+            var versionNumber = await query.CountAsync();
 
             return new SavedEvent(saveEvent, versionNumber);
         }
