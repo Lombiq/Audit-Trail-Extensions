@@ -1,13 +1,13 @@
 using Lombiq.AuditTrailExtensions.Models;
-using OrchardCore.AuditTrail.Providers;
 using OrchardCore.ContentManagement;
+using OrchardCore.Contents.AuditTrail.Services;
 using System.Threading.Tasks;
 
 namespace Lombiq.AuditTrailExtensions.Services
 {
     /// <summary>
     /// Service for getting the version numbers of a content item or a specific version of it based on
-    /// <see cref="ContentAuditTrailEventProvider.Saved"/> Audit Trail events.
+    /// <see cref="ContentAuditTrailEventConfiguration.Saved"/> Audit Trail events.
     /// </summary>
     public interface IAuditTrailContentVersionNumberService
     {
