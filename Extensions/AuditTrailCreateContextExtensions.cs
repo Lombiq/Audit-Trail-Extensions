@@ -6,7 +6,7 @@ namespace OrchardCore.AuditTrail.Services.Models
     {
         public static void AppendComment(this AuditTrailCreateContext context, string newComment, string separator = null)
         {
-            separator ??= NewLine + NewLine;
+            separator ??= NewLine;
             context.Comment = !string.IsNullOrEmpty(context.Comment)
                 ? context.Comment + separator + newComment
                 : newComment;
