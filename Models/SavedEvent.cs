@@ -12,13 +12,13 @@ namespace Lombiq.AuditTrailExtensions.Models
 {
     public class SavedEvent
     {
-        public AuditTrailEvent AuditTrailEvent { get; }
+        public AuditTrailEventFork AuditTrailEventFork { get; }
         public ContentItem ContentItem { get; }
         public int VersionNumber { get; }
 
-        public SavedEvent(AuditTrailEvent auditTrailEvent, int versionNumber)
+        public SavedEvent(AuditTrailEventFork auditTrailEvent, int versionNumber)
         {
-            AuditTrailEvent = auditTrailEvent;
+            AuditTrailEventFork = auditTrailEvent;
             ContentItem = auditTrailEvent?.As<ContentItem>(Saved);
             VersionNumber = versionNumber;
         }
@@ -35,7 +35,7 @@ namespace Lombiq.AuditTrailExtensions.Models
                 {
                     area = FeatureIds.Area,
                     VersionNumber,
-                    auditTrailEventId = AuditTrailEvent?.Id,
+                    auditTrailEventId = AuditTrailEventFork?.Id,
                 });
     }
 }

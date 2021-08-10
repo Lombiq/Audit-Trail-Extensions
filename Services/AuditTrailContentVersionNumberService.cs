@@ -15,7 +15,7 @@ namespace Lombiq.AuditTrailExtensions.Services
 
         public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
             _session
-                .Query<AuditTrailEvent, ContentAuditTrailEventIndex>(index =>
+                .Query<AuditTrailEventFork, ContentAuditTrailEventIndex>(index =>
                     index.ContentItemId == contentItemId && index.EventName == Saved)
                 .CountAsync();
 
@@ -24,12 +24,12 @@ namespace Lombiq.AuditTrailExtensions.Services
             string auditTrailEventId)
         {
             var auditTrailEventIndex = await _session
-                .QueryIndex<AuditTrailEventIndex>(index => index.AuditTrailEventId == auditTrailEventId)
+                .QueryIndex<AuditTrailEventIndexFork>(index => index.AuditTrailEventId == auditTrailEventId)
                 .FirstOrDefaultAsync();
             if (auditTrailEventIndex == null) return null;
 
             var query = _session
-                .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
+                .Query<AuditTrailEventFork, AuditTrailEventIndexFork>(index =>
                     index.EventName == Saved && index.Id <= auditTrailEventIndex.Id)
                 .With<ContentAuditTrailEventIndex>(index => index.ContentItemId == contentItemId)
                 .OrderByDescending(index => index.Id);
