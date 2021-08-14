@@ -1,9 +1,9 @@
 using Lombiq.AuditTrailExtensions.Models;
-using OrchardCore.AuditTrail.Indexes;
-using OrchardCore.AuditTrail.Models;
+using Lombiq.AuditTrail.Indexes;
+using Lombiq.AuditTrail.Models;
 using System.Threading.Tasks;
 using YesSql;
-using static OrchardCore.AuditTrail.Providers.ContentAuditTrailEventProvider;
+using static Lombiq.AuditTrail.Providers.ContentAuditTrailEventProvider;
 
 namespace Lombiq.AuditTrailExtensions.Services
 {

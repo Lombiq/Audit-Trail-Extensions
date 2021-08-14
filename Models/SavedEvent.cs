@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using OrchardCore.AuditTrail.Constants;
-using OrchardCore.AuditTrail.Controllers;
-using OrchardCore.AuditTrail.Models;
+using Lombiq.AuditTrail.Constants;
+using Lombiq.AuditTrail.Controllers;
+using Lombiq.AuditTrail.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.Entities;
 using OrchardCore.Mvc.Core.Utilities;
-using static OrchardCore.AuditTrail.Providers.ContentAuditTrailEventProvider;
+using static Lombiq.AuditTrail.Providers.ContentAuditTrailEventProvider;
 
 namespace Lombiq.AuditTrailExtensions.Models
 {
