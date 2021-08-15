@@ -1,9 +1,9 @@
-using Finitive.AuditTrailExtensions.Models;
+using Lombiq.AuditTrailExtensions.Models;
 using Finitive.AuditTrail.Providers;
 using OrchardCore.ContentManagement;
 using System.Threading.Tasks;
 
-namespace Finitive.AuditTrailExtensions.Services
+namespace Lombiq.AuditTrailExtensions.Services
 {
     /// <summary>
     /// Service for getting the version numbers of a content item or a specific version of it based on

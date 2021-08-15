@@ -1,4 +1,4 @@
-using Finitive.AuditTrailExtensions.Services;
+using Lombiq.AuditTrailExtensions.Services;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 

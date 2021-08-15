@@ -8,7 +8,7 @@ using OrchardCore.Entities;
 using OrchardCore.Mvc.Core.Utilities;
 using static Finitive.AuditTrail.Providers.ContentAuditTrailEventProvider;
 
-namespace Finitive.AuditTrailExtensions.Models
+namespace Lombiq.AuditTrailExtensions.Models
 {
     public class SavedEvent
     {
