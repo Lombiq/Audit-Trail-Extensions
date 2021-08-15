@@ -1,11 +1,11 @@
-using Lombiq.AuditTrailExtensions.Models;
-using Lombiq.AuditTrail.Indexes;
-using Lombiq.AuditTrail.Models;
+using Finitive.AuditTrailExtensions.Models;
+using Finitive.AuditTrail.Indexes;
+using Finitive.AuditTrail.Models;
 using System.Threading.Tasks;
 using YesSql;
-using static Lombiq.AuditTrail.Providers.ContentAuditTrailEventProvider;
+using static Finitive.AuditTrail.Providers.ContentAuditTrailEventProvider;
 
-namespace Lombiq.AuditTrailExtensions.Services
+namespace Finitive.AuditTrailExtensions.Services
 {
     public class AuditTrailContentVersionNumberService : IAuditTrailContentVersionNumberService
     {

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lombiq.AuditTrail\Lombiq.AuditTrail.csproj" />
+    <ProjectReference Include="..\Finitive.AuditTrail\Finitive.AuditTrail.csproj" />
   </ItemGroup>
 
   <ItemGroup>

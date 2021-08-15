@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Lombiq.AuditTrail.Constants;
-using Lombiq.AuditTrail.Controllers;
-using Lombiq.AuditTrail.Models;
+using Finitive.AuditTrail.Constants;
+using Finitive.AuditTrail.Controllers;
+using Finitive.AuditTrail.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.Entities;
 using OrchardCore.Mvc.Core.Utilities;
-using static Lombiq.AuditTrail.Providers.ContentAuditTrailEventProvider;
+using static Finitive.AuditTrail.Providers.ContentAuditTrailEventProvider;
 
-namespace Lombiq.AuditTrailExtensions.Models
+namespace Finitive.AuditTrailExtensions.Models
 {
     public class SavedEvent
     {

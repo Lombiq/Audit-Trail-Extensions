@@ -1,8 +1,8 @@
-using Lombiq.AuditTrailExtensions.Services;
+using Finitive.AuditTrailExtensions.Services;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 
-namespace Lombiq.AuditTrail
+namespace Finitive.AuditTrail
 {
     public class Startup : StartupBase
     {
