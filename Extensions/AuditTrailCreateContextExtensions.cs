@@ -1,10 +1,11 @@
+using Finitive.AuditTrail.Services.Models;
 using static System.Environment;
 
-namespace OrchardCore.AuditTrail.Services.Models
+namespace Finitive.AuditTrail.Services.Models
 {
     public static class AuditTrailCreateContextExtensions
     {
-        public static void AppendComment(this AuditTrailCreateContext context, string newComment, string separator = null)
+        public static void AppendComment(this AuditTrailCreateContextFork context, string newComment, string separator = null)
         {
             separator ??= NewLine;
             context.Comment = !string.IsNullOrEmpty(context.Comment)
