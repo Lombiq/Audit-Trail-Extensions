@@ -1,4 +1,3 @@
-using Finitive.AuditTrail.Services.Models;
 using static System.Environment;
 
 namespace Finitive.AuditTrail.Services.Models
