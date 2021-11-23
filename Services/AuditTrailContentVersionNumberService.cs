@@ -1,6 +1,6 @@
-using Lombiq.AuditTrailExtensions.Models;
 using Finitive.AuditTrail.Indexes;
 using Finitive.AuditTrail.Models;
+using Lombiq.AuditTrailExtensions.Models;
 using System.Threading.Tasks;
 using YesSql;
 using static Finitive.AuditTrail.Providers.ContentAuditTrailEventProvider;

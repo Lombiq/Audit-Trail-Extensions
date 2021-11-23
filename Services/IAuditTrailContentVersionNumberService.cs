@@ -1,5 +1,5 @@
-using Lombiq.AuditTrailExtensions.Models;
 using Finitive.AuditTrail.Providers;
+using Lombiq.AuditTrailExtensions.Models;
 using OrchardCore.ContentManagement;
 using System.Threading.Tasks;
 
