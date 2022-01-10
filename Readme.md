@@ -1,4 +1,4 @@
-# Lombiq Audit Trail Extensions
+# Lombiq Audit Trail Extensions for Orchard Core
 
 
 
