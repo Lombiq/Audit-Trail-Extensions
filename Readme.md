@@ -1,6 +1,7 @@
 # Lombiq Audit Trail Extensions for Orchard Core
 
 
+[![Lombiq.AuditTrailExtensions NuGet](https://img.shields.io/nuget/v/Lombiq.AuditTrailExtensions?label=Lombiq.AuditTrailExtensions)](https://www.nuget.org/packages/Lombiq.AuditTrailExtensions/)
 
 ## About
 
