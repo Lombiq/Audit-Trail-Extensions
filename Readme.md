@@ -2,6 +2,9 @@
 
 
 
+[![Lombiq.AuditTrailExtensions NuGet](https://img.shields.io/nuget/v/Lombiq.AuditTrailExtensions?label=Lombiq.AuditTrailExtensions)](https://www.nuget.org/packages/Lombiq.AuditTrailExtensions/)
+
+
 ## About
 
 A module with additional features for the [Audit Trail module](https://docs.orchardcore.net/en/latest/docs/reference/modules/AuditTrail/) in Orchard Core. 
