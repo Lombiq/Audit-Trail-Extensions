@@ -23,8 +23,7 @@ public class SavedEvent
     }
 
     /// <summary>
-    /// Returns a link to <see cref="AuditTrailContentController.Display"/> with the right version number and event
-    /// ID.
+    /// Returns a link to <see cref="AuditTrailContentController.Display"/> with the right version number and event ID.
     /// </summary>
     public string GenerateContentDetailLink(LinkGenerator linkGenerator, HttpContext httpContext) =>
         linkGenerator.GetUriByAction(

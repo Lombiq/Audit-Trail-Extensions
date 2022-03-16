@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace Lombiq.AuditTrailExtensions.Services;
 
 /// <summary>
-/// Service for getting the version numbers of a content item or a specific version of it based on
-/// <see cref="ContentAuditTrailEventConfiguration.Saved"/> Audit Trail events.
+/// Service for getting the version numbers of a content item or a specific version of it based on <see
+/// cref="ContentAuditTrailEventConfiguration.Saved"/> Audit Trail events.
 /// </summary>
 public interface IAuditTrailContentVersionNumberService
 {
