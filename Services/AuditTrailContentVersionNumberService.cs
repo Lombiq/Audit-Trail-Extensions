@@ -5,39 +5,38 @@ using System.Threading.Tasks;
 using YesSql;
 using static OrchardCore.Contents.AuditTrail.Services.ContentAuditTrailEventConfiguration;
 
-namespace Lombiq.AuditTrailExtensions.Services
+namespace Lombiq.AuditTrailExtensions.Services;
+
+public class AuditTrailContentVersionNumberService : IAuditTrailContentVersionNumberService
 {
-    public class AuditTrailContentVersionNumberService : IAuditTrailContentVersionNumberService
+    private readonly ISession _session;
+
+    public AuditTrailContentVersionNumberService(ISession session) => _session = session;
+
+    public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
+        _session
+            .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
+                index.CorrelationId == contentItemId && index.Name == Saved)
+            .CountAsync();
+
+    public async Task<SavedEvent> GetCurrentVersionAsync(
+        string contentItemId,
+        string auditTrailEventId)
     {
-        private readonly ISession _session;
+        var auditTrailEventIndex = await _session
+            .QueryIndex<AuditTrailEventIndex>(index => index.EventId == auditTrailEventId)
+            .FirstOrDefaultAsync();
+        if (auditTrailEventIndex == null) return null;
 
-        public AuditTrailContentVersionNumberService(ISession session) => _session = session;
+        var query = _session
+            .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
+                index.Name == Saved && index.Id <= auditTrailEventIndex.Id)
+            .With<AuditTrailEventIndex>(index => index.CorrelationId == contentItemId)
+            .OrderByDescending(index => index.Id);
 
-        public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
-            _session
-                .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
-                    index.CorrelationId == contentItemId && index.Name == Saved)
-                .CountAsync();
+        var saveEvent = await query.FirstOrDefaultAsync();
+        var versionNumber = await query.CountAsync();
 
-        public async Task<SavedEvent> GetCurrentVersionAsync(
-            string contentItemId,
-            string auditTrailEventId)
-        {
-            var auditTrailEventIndex = await _session
-                .QueryIndex<AuditTrailEventIndex>(index => index.EventId == auditTrailEventId)
-                .FirstOrDefaultAsync();
-            if (auditTrailEventIndex == null) return null;
-
-            var query = _session
-                .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
-                    index.Name == Saved && index.Id <= auditTrailEventIndex.Id)
-                .With<AuditTrailEventIndex>(index => index.CorrelationId == contentItemId)
-                .OrderByDescending(index => index.Id);
-
-            var saveEvent = await query.FirstOrDefaultAsync();
-            var versionNumber = await query.CountAsync();
-
-            return new SavedEvent(saveEvent, versionNumber);
-        }
+        return new SavedEvent(saveEvent, versionNumber);
     }
 }
