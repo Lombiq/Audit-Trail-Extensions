@@ -15,7 +15,7 @@
     <PackageTags>OrchardCore;Lombiq;AspNetCore;AuditTrail</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Audit-Trail-Extensions</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Audit-Trail-Extensions</PackageProjectUrl>
-    <PackageLicenseFile>Licence.md</PackageLicenseFile>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
