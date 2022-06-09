@@ -4,7 +4,7 @@ using static Lombiq.AuditTrailExtensions.Constants.FeatureIds;
 [assembly: Module(
     Name = "Lombiq Audit Trail Extensions",
     Author = "Lombiq Technologies",
-    Version = "2.0.0",
+    Version = "0.0.1",
     Description = "Module with additional functionality to the stock Audit Trail.",
     Website = "https://github.com/Lombiq/Audit-Trail-Extensions"
 )]
@@ -20,3 +20,7 @@ using static Lombiq.AuditTrailExtensions.Constants.FeatureIds;
         "OrchardCore.AuditTrail",
     }
 )]
+
+
+
+
