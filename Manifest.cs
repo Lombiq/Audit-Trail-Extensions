@@ -20,7 +20,3 @@ using static Lombiq.AuditTrailExtensions.Constants.FeatureIds;
         "OrchardCore.AuditTrail",
     }
 )]
-
-
-
-
