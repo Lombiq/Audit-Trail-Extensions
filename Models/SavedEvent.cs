@@ -9,18 +9,11 @@ using OrchardCore.Mvc.Core.Utilities;
 
 namespace Lombiq.AuditTrailExtensions.Models;
 
-public class SavedEvent
+public class SavedEvent(AuditTrailEvent auditTrailEvent, int versionNumber)
 {
-    public AuditTrailEvent AuditTrailEvent { get; }
-    public ContentItem ContentItem { get; }
-    public int VersionNumber { get; }
-
-    public SavedEvent(AuditTrailEvent auditTrailEvent, int versionNumber)
-    {
-        AuditTrailEvent = auditTrailEvent;
-        ContentItem = auditTrailEvent?.As<ContentItem>(ContentAuditTrailEventConfiguration.Saved);
-        VersionNumber = versionNumber;
-    }
+    public AuditTrailEvent AuditTrailEvent { get; } = auditTrailEvent;
+    public ContentItem ContentItem { get; } = auditTrailEvent?.As<ContentItem>(ContentAuditTrailEventConfiguration.Saved);
+    public int VersionNumber { get; } = versionNumber;
 
     /// <summary>
     /// Returns a link to <see cref="AuditTrailContentController.Display"/> with the right version number and event ID.
