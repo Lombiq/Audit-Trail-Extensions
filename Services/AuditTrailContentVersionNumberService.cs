@@ -7,10 +7,14 @@ using static OrchardCore.Contents.AuditTrail.Services.ContentAuditTrailEventConf
 
 namespace Lombiq.AuditTrailExtensions.Services;
 
-public class AuditTrailContentVersionNumberService(ISession session) : IAuditTrailContentVersionNumberService
+public class AuditTrailContentVersionNumberService : IAuditTrailContentVersionNumberService
 {
+    private readonly ISession _session;
+
+    public AuditTrailContentVersionNumberService(ISession session) => _session = session;
+
     public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
-        session
+        _session
             .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
                 index.CorrelationId == contentItemId && index.Name == Saved)
             .CountAsync();
@@ -19,12 +23,12 @@ public class AuditTrailContentVersionNumberService(ISession session) : IAuditTra
         string contentItemId,
         string auditTrailEventId)
     {
-        var auditTrailEventIndex = await session
+        var auditTrailEventIndex = await _session
             .QueryIndex<AuditTrailEventIndex>(index => index.EventId == auditTrailEventId)
             .FirstOrDefaultAsync();
         if (auditTrailEventIndex == null) return null;
 
-        var query = session
+        var query = _session
             .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
                 index.Name == Saved && index.Id <= auditTrailEventIndex.Id)
             .With<AuditTrailEventIndex>(index => index.CorrelationId == contentItemId)
