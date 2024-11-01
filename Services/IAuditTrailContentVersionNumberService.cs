@@ -14,7 +14,7 @@ public interface IAuditTrailContentVersionNumberService
     /// <summary>
     /// Returns the current largest version number for the content item.
     /// </summary>
-    Task<int> GetLatestVersionNumberAsync(string contentItemId);
+    Task<int> GetLatestVersionNumberChangedAsync(string contentItemId);
 
     /// <summary>
     /// Returns the version number and its content of a specific version as of the event identified by the given
@@ -30,5 +30,5 @@ public static class ContentVersionNumberServiceExtensions
     public static Task<int> GetLatestVersionNumberAsync(
         this IAuditTrailContentVersionNumberService service,
         IContent content) =>
-        service.GetLatestVersionNumberAsync(content?.ContentItem?.ContentItemId);
+        service.GetLatestVersionNumberChangedAsync(content?.ContentItem?.ContentItemId);
 }

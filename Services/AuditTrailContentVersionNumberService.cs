@@ -13,7 +13,7 @@ public class AuditTrailContentVersionNumberService : IAuditTrailContentVersionNu
 
     public AuditTrailContentVersionNumberService(ISession session) => _session = session;
 
-    public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
+    public Task<int> GetLatestVersionNumberChangedAsync(string contentItemId) =>
         _session
             .Query<AuditTrailEvent, AuditTrailEventIndex>(index =>
                 index.CorrelationId == contentItemId && index.Name == Saved)
