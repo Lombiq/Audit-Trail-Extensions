@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**;Tests\**</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);.git*</DefaultItemExcludes>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="node_modules\**" />
     <None Remove="Tests\**" />
     <None Include="Readme.md" />
   </ItemGroup>
