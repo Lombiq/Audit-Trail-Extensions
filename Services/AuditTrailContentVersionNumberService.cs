@@ -1,6 +1,7 @@
 using Lombiq.AuditTrailExtensions.Models;
 using OrchardCore.AuditTrail.Indexes;
 using OrchardCore.AuditTrail.Models;
+using OrchardCore.Modules;
 using System.Threading.Tasks;
 using YesSql;
 using static OrchardCore.Contents.AuditTrail.Services.ContentAuditTrailEventConfiguration;
@@ -10,8 +11,13 @@ namespace Lombiq.AuditTrailExtensions.Services;
 public class AuditTrailContentVersionNumberService : IAuditTrailContentVersionNumberService
 {
     private readonly ISession _session;
+    private readonly IClock _clock;
 
-    public AuditTrailContentVersionNumberService(ISession session) => _session = session;
+    public AuditTrailContentVersionNumberService(ISession session, IClock clock)
+    {
+        _session = session;
+        _clock = clock;
+    }
 
     public Task<int> GetLatestVersionNumberAsync(string contentItemId) =>
         _session
