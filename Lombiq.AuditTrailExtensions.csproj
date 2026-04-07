@@ -10,7 +10,7 @@
   <PropertyGroup>
     <Title>Lombiq Audit Trail Extensions for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
-    <DescriptionBody>A module with additional features for the Audit Trail module in Orchard Core. See the project website for detailed documentation.</DescriptionBody>
+    <DescriptionBody>A module with additional features for the Audit Trail module in Orchard Core.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;AuditTrail</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Audit-Trail-Extensions</RepositoryUrl>
   </PropertyGroup>
