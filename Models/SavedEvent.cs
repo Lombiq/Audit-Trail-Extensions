@@ -18,7 +18,7 @@ public class SavedEvent
     public SavedEvent(AuditTrailEvent auditTrailEvent, int versionNumber)
     {
         AuditTrailEvent = auditTrailEvent;
-        ContentItem = auditTrailEvent?.As<ContentItem>(ContentAuditTrailEventConfiguration.Saved);
+        ContentItem = auditTrailEvent?.GetOrCreate<ContentItem>(ContentAuditTrailEventConfiguration.Saved);
         VersionNumber = versionNumber;
     }
 
