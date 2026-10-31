@@ -8,6 +8,20 @@ on:
 jobs:
   publish-nuget:
     name: Publish to NuGet
-    uses: Lombiq/GitHub-Actions/.github/workflows/publish-nuget.yml@dev
-    secrets:
-      API_KEY: ${{ secrets.DEFAULT_NUGET_PUBLISH_API_KEY }}
+    uses: Lombiq/GitHub-Actions/.github/workflows/publish-nuget.yml@issue/OSOE-1290
+    with:
+      push: 'false'
+
+  push-nuget:
+    name: Push to NuGet
+    needs: publish-nuget
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Push to NuGet
+        uses: Lombiq/GitHub-Actions/.github/actions/push-nuget@issue/OSOE-1290
+        with:
+          trusted-publishing-user: ${{ vars.DEFAULT_NUGET_TRUSTED_PUBLISHING_USER }}
+          publish-version: ${{ needs.publish-nuget.outputs.publish-version }}
